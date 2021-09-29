@@ -1,0 +1,44 @@
+import { Story, ArgsTable, Meta, Source, Canvas } from '@storybook/addon-docs';
+import {Button} from './Button';
+
+export const Template = args => <Button {...args}/>;
+
+export const argTypes = {
+  size: {
+    name: 'Size',
+    control: {
+      type: 'radio',
+      options: ['small', 'medium', 'large']
+    }
+  }
+};
+
+export const defaultArgs = {
+  size: 'medium',
+  label: 'Button'
+};
+
+<Meta
+  title="Bug/Reproduction"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true }
+     },
+  }}/>
+
+# Test Button
+
+<Story name="firstStory" argTypes={argTypes} args={defaultArgs}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="firstStory"/>
+
+## Second story
+
+<Story name="secondStory" argTypes={argTypes} args={defaultArgs}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="secondStory"/>
